@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3KBJE575N"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -12,12 +12,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glass Card Profile</title>
-    
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="pfp.jpg">
-<meta name="theme-color" content="#0f172a">
-    
+<title>LM0702</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -245,24 +241,24 @@ body {
     transform: translateY(-2px);
 }
 
-/* Dropdown Menu */
+/* Glassy Dropdown Menu */
 .dropdown-menu {
     position: absolute;
     top: 75px;
     left: 30px;
-    background: rgba(20, 20, 20, 0.65);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.05); /* Glassy background */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    padding: 10px 0;
+    border-radius: 20px;
+    padding: 10px;
     list-style: none;
     min-width: 180px;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-15px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), inset 0 0 15px rgba(255,255,255,0.05);
 }
 
 .dropdown-menu.show {
@@ -271,21 +267,111 @@ body {
     transform: translateY(0);
 }
 
+/* Glassy Dropdown Buttons */
 .dropdown-menu li a {
-    color: rgba(255, 255, 255, 0.85);
-    padding: 12px 25px;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 12px 20px;
     display: block;
     text-decoration: none;
     font-size: 0.95rem;
-    font-weight: 400;
-    transition: all 0.2s;
+    font-weight: 500;
+    transition: all 0.3s ease;
     letter-spacing: 0.5px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03); /* Individual button glass */
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .dropdown-menu li a:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
     color: white;
-    padding-left: 30px; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* ============================ */
+/* ABOUT PAGE OVERLAY           */
+/* ============================ */
+
+#about-page {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Soft semi-transparent overlay so the background video still shows through */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
+}
+
+#about-page.hidden-page {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.about-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.about-content {
+    text-align: center;
+    color: white;
+    padding: 50px 30px;
+    width: min(92vw, 420px);
+    /* Glassmorphism exact match to main card */
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 10px 40px rgba(0,0,0,.25), inset 0 0 25px rgba(255,255,255,.04);
+    border-radius: 35px;
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shine effect on About card */
+.about-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.12) 50%, transparent 80%);
+    animation: shine 8s linear infinite;
+    pointer-events: none; /* Allows text to be highlighted */
+}
+
+.about-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.about-content p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 1;
 }
 
 /* ============================ */
@@ -316,6 +402,14 @@ body {
     justify-content: center;
     align-items: center;
     perspective: 2500px;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for hiding */
+}
+
+/* Class added when About is open to hide the main card */
+.container.hidden-behind {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
 }
 
 .card {
@@ -468,7 +562,7 @@ body {
     .back h1 { font-size: 3rem; }
     .start-content h1 { font-size: 3rem; } 
     .top-left-brand { top: 25px; left: 25px; font-size: 0.9rem; } 
-    .main-header { padding: 0 20px; }
+    .main-header, .about-header { padding: 0 20px; }
     .dropdown-menu { left: 20px; }
     .header-title { font-size: 1rem; }
 }
@@ -477,7 +571,6 @@ body {
 
 <body>
 
-<!-- STARTING PAGE -->
 <div id="start-page">
     <video class="start-video-bg" autoplay muted loop playsinline poster="Startinbg.jpg">
         <source src="Background.mp4" type="video/mp4">
@@ -504,7 +597,19 @@ body {
     </div>
 </div>
 
-<!-- MAIN PAGE HEADER -->
+<div id="about-page" class="hidden-page">
+    <div class="about-header">
+        <div class="nav-btn" id="about-back-btn">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+    </div>
+    
+    <div class="about-content">
+        <h1>About</h1>
+        <p>I'm the best </p>
+    </div>
+</div>
+
 <header class="main-header">
     <div class="nav-btn" id="menu-btn">
         <i class="fas fa-bars"></i>
@@ -516,20 +621,18 @@ body {
         <i class="fas fa-arrow-left"></i>
     </div>
 
-    <!-- Dropdown Menu -->
     <ul class="dropdown-menu" id="dropdown-menu">
-        <!-- Lines removed here -->
+        <li><a href="#" id="about-link"><i class="fas fa-user" style="margin-right: 8px;"></i> About</a></li>
     </ul>
 </header>
 
-<!-- MAIN PROFILE -->
 <video class="video-bg" autoplay muted loop playsinline>
     <source src="Background.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
 
-<div class="container">
+<div class="container" id="main-card-container">
     <div class="card" id="card">
         <div class="side front">
             <img src="pfp.jpg" class="pfp">
@@ -540,8 +643,8 @@ body {
             </p>
 
             <div class="socials">
-                <a href="#"><i class="fab fa-tiktok"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@lm0702_?_r=1&_t=ZS-96sxvgTDxY0"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/lm0702_?igsh=MWxlMXkxOHB6dnQwaA=="><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-snapchat"></i></a>
                 <a href="#"><i class="fab fa-discord"></i></a>
                 <a href="#"><i class="fab fa-telegram"></i></a>
@@ -566,13 +669,18 @@ body {
 </div>
 
 <script>
-// --- HEADER MENUS & BACK BUTTON LOGIC ---
+// --- HEADER MENUS & ABOUT PAGE LOGIC ---
 const menuBtn = document.getElementById('menu-btn');
 const backBtn = document.getElementById('back-btn');
 const dropdownMenu = document.getElementById('dropdown-menu');
 const startPage = document.getElementById('start-page');
 const swipeBtn = document.getElementById('swipe-btn');
 const swipeText = document.getElementById('swipe-text');
+
+const aboutLink = document.getElementById('about-link');
+const aboutPage = document.getElementById('about-page');
+const aboutBackBtn = document.getElementById('about-back-btn');
+const mainCardContainer = document.getElementById('main-card-container'); // To hide main card
 
 // Toggle Dropdown Menu
 menuBtn.addEventListener('click', (e) => {
@@ -585,6 +693,20 @@ document.addEventListener('click', (e) => {
     if (!menuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
         dropdownMenu.classList.remove('show');
     }
+});
+
+// About Link logic
+aboutLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdownMenu.classList.remove('show'); // Hide the dropdown menu
+    aboutPage.classList.remove('hidden-page'); // Show the about page
+    mainCardContainer.classList.add('hidden-behind'); // Smoothly hide the main 3D card
+});
+
+// About Page Back Button
+aboutBackBtn.addEventListener('click', () => {
+    aboutPage.classList.add('hidden-page'); // Hide about page
+    mainCardContainer.classList.remove('hidden-behind'); // Smoothly show the main 3D card again
 });
 
 // Back Button - Return to start page
@@ -715,11 +837,11 @@ document.addEventListener('touchmove', (e) => {
 });
 
 document.addEventListener('mousedown', () => {
-    if (isEdgeOn() && startPage.classList.contains('hidden')) isCardDragging = true;
+    if (isEdgeOn() && startPage.classList.contains('hidden') && aboutPage.classList.contains('hidden-page')) isCardDragging = true;
 });
 
 document.addEventListener('touchstart', (e) => {
-    if (isEdgeOn() && startPage.classList.contains('hidden')) {
+    if (isEdgeOn() && startPage.classList.contains('hidden') && aboutPage.classList.contains('hidden-page')) {
         isCardDragging = true;
         lastCardTouchX = e.touches[0].clientX;
         lastCardTouchY = e.touches[0].clientY;
